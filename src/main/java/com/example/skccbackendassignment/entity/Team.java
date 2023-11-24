@@ -1,5 +1,7 @@
 package com.example.skccbackendassignment.entity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -38,7 +40,7 @@ public class Team {
                 null,
                 teamRequest.getName(),
                 teamRequest.getLocation(),
-                null,
+                LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")),
                 null);
     }
 }
