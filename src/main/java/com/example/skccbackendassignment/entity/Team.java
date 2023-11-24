@@ -8,7 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.example.skccbackendassignment.dto.TeamRequest;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Team {
 
     @Id
@@ -21,6 +30,15 @@ public class Team {
 
     private String foundedDate;
 
-    @OneToMany
+    @OneToMany(mappedBy="team")
     private List<Member> members;
+
+    public static Team of(TeamRequest teamRequest) {
+        return new Team(
+                null,
+                teamRequest.getName(),
+                teamRequest.getLocation(),
+                null,
+                null);
+    }
 }
