@@ -1,5 +1,8 @@
 package com.example.skccbackendassignment.entity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,7 +42,7 @@ public class Member {
                 memberRequest.getFirstName(),
                 memberRequest.getLastName(),
                 memberRequest.getAddress(),
-                null,
+                LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")),
                 null);
     }
 }
