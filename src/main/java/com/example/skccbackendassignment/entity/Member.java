@@ -6,7 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.skccbackendassignment.dto.MemberRequest;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
 
     @Id
@@ -23,4 +32,14 @@ public class Member {
 
     @ManyToOne
     private Team team;
+
+    public static Member of(MemberRequest memberRequest) {
+        return new Member(
+                null,
+                memberRequest.getFirstName(),
+                memberRequest.getLastName(),
+                memberRequest.getAddress(),
+                null,
+                null);
+    }
 }
