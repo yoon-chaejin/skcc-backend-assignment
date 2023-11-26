@@ -68,4 +68,23 @@ public class MemberServiceTest {
         assertEquals(2, resultTwo.getNumberOfElements());
         assertEquals(0, resultThree.getNumberOfElements());
     }
+
+    @Test
+    void testFindMemberByNameAndPage() {
+        // given
+        for (int i=0; i<3; i++) {
+            Member member = new Member(null, "길동", "홍", "주소", "20231126", null);
+            memberService.register(member);
+        }
+
+        // when
+        Pageable pageable = Pageable.ofSize(5);
+        Page<Member> resultOne = memberService.findMemberByNameAndPage("길동", pageable);
+        Page<Member> resultTwo = memberService.findMemberByNameAndPage("김부각", pageable);
+
+
+        // then
+        assertEquals(3, resultOne.getNumberOfElements());
+        assertEquals(0, resultTwo.getNumberOfElements());
+    }
 }

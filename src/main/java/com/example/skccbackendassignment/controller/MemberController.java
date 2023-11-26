@@ -26,8 +26,8 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping()
-    public Page<Member> findMemberByPage(Pageable pageable) {
-        return memberService.findMemberByPage(pageable);
+    public Page<Member> findMemberByNameAndPage(String keyword, Pageable pageable) {
+        return memberService.findMemberByNameAndPage(keyword, pageable);
     }
 
     @GetMapping("/{id}")

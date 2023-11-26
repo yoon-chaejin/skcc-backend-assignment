@@ -16,6 +16,10 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
+    public Page<Member> findMemberByNameAndPage(String keyword, Pageable pageable) {
+        return memberRepository.findAllByNameContaining(keyword, pageable);
+    }
+
     public Page<Member> findMemberByPage(Pageable pageable) {
         return memberRepository.findAll(pageable);
     }
