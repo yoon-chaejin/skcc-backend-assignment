@@ -1,5 +1,7 @@
 package com.example.skccbackendassignment.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.skccbackendassignment.entity.Member;
@@ -12,6 +14,10 @@ public class MemberService {
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+    }
+
+    public Page<Member> findMemberByPage(Pageable pageable) {
+        return memberRepository.findAll(pageable);
     }
 
     public Member findMemberById(Long id) {

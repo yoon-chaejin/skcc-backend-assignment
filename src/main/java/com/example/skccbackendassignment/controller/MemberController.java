@@ -1,5 +1,7 @@
 package com.example.skccbackendassignment.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,11 @@ import lombok.AllArgsConstructor;
 public class MemberController {
 
     private MemberService memberService;
+
+    @GetMapping()
+    public Page<Member> findMemberByPage(Pageable pageable) {
+        return memberService.findMemberByPage(pageable);
+    }
 
     @GetMapping("/{id}")
     public Member findMemberById(@PathVariable("id") Long id) {
